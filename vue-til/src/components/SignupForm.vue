@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     async submitForm() {
-      alert("제출");
       const userData = {
         username: this.username,
         password: this.password,
