@@ -1,0 +1,54 @@
+<template>
+  <form @submit.prevent="submitForm">
+    <div class="">
+      <label for="username">ID: </label>
+      <input id="username" v-model="username" type="text" />
+    </div>
+    <div class="">
+      <label for="password">PW: </label>
+      <input id="password" v-model="password" type="text" />
+    </div>
+    <div class="">
+      <label for="nickname">Nickname: </label>
+      <input id="nickname" v-model="nickname" type="text" />
+    </div>
+    <button type="submit">Sign Up</button>
+    <p>{{ logMessage }}</p>
+  </form>
+</template>
+
+<script>
+import { registerUser } from "@/api/index";
+
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+      nickname: "",
+      logMessage: "",
+    };
+  },
+  methods: {
+    async submitForm() {
+      alert("제출");
+      const userData = {
+        username: this.username,
+        password: this.password,
+        nickname: this.nickname,
+      };
+      const { data } = await registerUser(userData);
+      console.log(data.username);
+      this.logMessage = `${data.username}님, 가입되었습니다.`;
+      this.initForm();
+    },
+    initForm() {
+      this.username = "";
+      this.password = "";
+      this.nickname = "";
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped></style>
