@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <form action="" @submit.prevent="submitForm">
       <div class="">
         <label for="username">ID</label>
@@ -42,7 +42,10 @@ export default {
           password: this.password,
         };
         const { data } = await loginUser(userData);
-        this.logMessage = `${data.user.username} 님이 로그인 되었습니다.`;
+        this.$store.commit("setUsername", data.user.username);
+
+        // move to main
+        this.$router.push("/main");
       } catch (error) {
         this.logMessage = error.response.data;
       } finally {

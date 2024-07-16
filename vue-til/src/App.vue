@@ -1,12 +1,15 @@
 <template>
-  <div>
-    <app-header></app-header>
-    <router-view></router-view>
+  <div class="body-wrap">
+    <AppHeader></AppHeader>
+    <main>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 
 <script>
 import AppHeader from "@/components/common/AppHeader.vue";
+import "./style.css";
 
 export default {
   components: {
