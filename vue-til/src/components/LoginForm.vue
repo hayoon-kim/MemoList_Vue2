@@ -42,6 +42,7 @@ export default {
           password: this.password,
         };
         const { data } = await loginUser(userData);
+        this.$store.commit("setToken", data.token);
         this.$store.commit("setUsername", data.user.username);
 
         // move to main
