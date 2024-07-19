@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import { createPost } from "@/api/posts";
+import { fetchPost, modifyPost } from "@/api/posts";
+
 export default {
   data() {
     return {
@@ -35,19 +36,24 @@ export default {
   },
   methods: {
     async submitForm() {
+      const id = this.$route.params.id;
       try {
-        const response = await createPost({
+        await modifyPost(id, {
           title: this.title,
           contents: this.contents,
         });
-        if (response) {
-          this.$router.push("/main");
-        }
-        console.log(response);
+        this.$router.push("/main");
       } catch (error) {
-        this.logMessage = error.response.data.message;
+        this.logMessage = error;
       }
     },
+  },
+  async created() {
+    const id = this.$route.params.id;
+    const { data } = await fetchPost(id);
+    this.title = data.title;
+    this.contents = data.contents;
+    console.log(data);
   },
 };
 </script>
