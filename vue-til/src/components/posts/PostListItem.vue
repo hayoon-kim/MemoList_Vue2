@@ -7,7 +7,7 @@
       {{ postItem.contents }}
     </div>
     <div class="post-time">
-      {{ postItem.createdAt }}
+      {{ postItem.createdAt | formatDate }}
       <i class="fa-solid fa-pen" @click="routeEditPage"></i>
       <i class="fa-solid fa-trash" @click="deleteItem"></i>
     </div>
