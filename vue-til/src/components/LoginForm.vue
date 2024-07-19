@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <form action="" @submit.prevent="submitForm">
+    <form class="login-form" action="" @submit.prevent="submitForm">
       <div class="">
         <label for="username">ID</label>
         <input id="username" v-model="username" type="text" />
@@ -13,12 +13,11 @@
         Login
       </button>
     </form>
-    <p>{{ logMessage }}</p>
+    <p class="log">{{ logMessage }}</p>
   </div>
 </template>
 
 <script>
-import { loginUser } from "@/api/auth";
 import { validateEmail } from "@/utils/validation";
 
 export default {
@@ -41,9 +40,8 @@ export default {
           username: this.username,
           password: this.password,
         };
-        const { data } = await loginUser(userData);
-        this.$store.commit("setToken", data.token);
-        this.$store.commit("setUsername", data.user.username);
+
+        await this.$store.dispatch("LOGIN", userData);
 
         // move to main
         this.$router.push("/main");

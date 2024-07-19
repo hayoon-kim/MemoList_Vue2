@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <form class="signup-form" @submit.prevent="submitForm">
     <div class="">
       <label for="username">ID: </label>
       <input id="username" v-model="username" type="text" />
@@ -13,7 +13,7 @@
       <input id="nickname" v-model="nickname" type="text" />
     </div>
     <button type="submit">Sign Up</button>
-    <p>{{ logMessage }}</p>
+    <p class="log">{{ logMessage }}</p>
   </form>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li class="post-list-item">
     <div class="post-title">
       {{ postItem.title }}
     </div>

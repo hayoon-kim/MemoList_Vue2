@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div class="main list-container contents">
+  <div class="main-wrapper">
+    <div class="list-container contents">
       <h1 class="page-headers">Today I Learned</h1>
       <LoadingSpinner v-if="isLoading"></LoadingSpinner>
-      <ul v-if="!isLoading">
+      <ul v-if="!isLoading" class="post-list">
         <PostListItem
           v-for="postItem in postItems"
           :key="postItem._id"
@@ -11,6 +11,7 @@
         ></PostListItem>
       </ul>
     </div>
+    <router-link to="/add" class="create-button"> + </router-link>
   </div>
 </template>
 
@@ -27,14 +28,17 @@ export default {
   data() {
     return {
       postItems: [],
+      isLoading: false,
     };
   },
   methods: {
     async fetchData() {
-      // this.isLoading = true;
+      this.isLoading = true;
       const { data } = await fetchPosts();
-      // this.isLoading = false;
-      this.postItems = data.posts;
+      if (data.posts) {
+        this.isLoading = false;
+        this.postItems = data.posts;
+      }
     },
   },
   created() {

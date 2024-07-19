@@ -28,6 +28,10 @@ button {
   border: none;
 }
 
+ul {
+  list-style: none;
+}
+
 :root {
   --primary-navy: #27187E;
   --primary-sky-blue: #758BFD;
@@ -35,6 +39,7 @@ button {
   --primary-white: #F1F2F6;
   --primary-orange: #FF8600;
 
+  --font-size-12: 12px;
   --font-size-16: 16px;
   --font-size-24: 24px;
 
@@ -50,7 +55,7 @@ a {
   color: inherit;
 }
 
-.body-wrap {
+.body-wrapper {
   width: 100%;
   /* height: 100%; */
 }
@@ -75,9 +80,11 @@ header a:first-child {
 
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  position: relative;
 }
 
 .form-wrap {
@@ -88,7 +95,6 @@ main {
   -webkit-backdrop-filter: blur( 1.5px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
-  
 }
 
 form {
@@ -98,7 +104,8 @@ form {
   /* align-items: center; */
 }
 
-form div {
+.login-form div ,
+.signup-form div {
   padding: var(--margin-10);
   margin: var(--margin-5);
   display: flex;
@@ -106,7 +113,9 @@ form div {
   align-items: center;
 }
 
-form button {
+.login-form button,
+.signup-form button,
+.contents-form button{
   margin-top: 10px;
   width: 100%;
   height: 30px;
@@ -118,15 +127,125 @@ form button {
   font-size: var(--font-size-16);
 }
 
-form div label {
+.login-form div label,
+.signup-form div label {
   margin-right: var(--margin-5);
 }
 
-form div input {
+.login-form div input,
+.signup-form div input {
   padding: var(--margin-5);
 }
 
 div h1 {
   text-align: center;
   padding-top: var(--margin-25);
+}
+
+/* study-list-item */
+.post-list {
+}
+
+.post-list-item {
+  width: 600px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  margin: var(--margin-15) 0;
+  padding: var(--margin-15);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.post-title {
+  font-size: var(--font-size-24);
+  font-weight: bold;
+  margin-bottom: var(--margin-10);
+}
+
+.post-time {
+  align-self: flex-end;
+  font-size: var(--font-size-12);
+  position: absolute;
+  bottom: 10px;
+}
+
+
+
+/* button */
+
+.create-button {
+  /* From https://css.glass */
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size-24)*2);
+  font-weight: bold;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.create-button:hover {
+  scale: 1.1;
+  transition: all ease-in-out 100ms;
+}
+
+/* contents form */
+.post-form-wrap {
+  width: 500px;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1.5px );
+  -webkit-backdrop-filter: blur( 1.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.contents-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contents-form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: var(--margin-10);
+}
+
+.contents-form input {
+  padding: var(--margin-5);
+}
+
+/* message */
+.log {
+  text-align: center;
+  color: red;
+}
+
+.warning {
+  text-align: right;
+  color: red;
+  font-size: var(--font-size-12);
+}
+
+@media screen {
+  .post-list-item {
+    max-width: 400px;
+  }
+
 }
