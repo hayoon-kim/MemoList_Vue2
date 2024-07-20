@@ -6,7 +6,7 @@
     </div>
     <div class="">
       <label for="password">PW: </label>
-      <input id="password" v-model="password" type="text" />
+      <input id="password" v-model="password" type="password" />
     </div>
     <div class="">
       <label for="nickname">Nickname: </label>

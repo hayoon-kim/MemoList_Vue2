@@ -7,7 +7,7 @@
       </div>
       <div class="">
         <label for="password">PW</label>
-        <input id="password" v-model="password" type="text" />
+        <input id="password" v-model="password" type="password" />
       </div>
       <button :disabled="!isUsernameValid || !password" type="submit">
         Login
