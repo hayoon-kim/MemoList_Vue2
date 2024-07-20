@@ -13,7 +13,7 @@
         Login
       </button>
     </form>
-    <p class="log">{{ logMessage }}</p>
+    <p class="log warning">{{ logMessage }}</p>
   </div>
 </template>
 
